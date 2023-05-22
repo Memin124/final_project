@@ -1,6 +1,6 @@
 import processing.video.*;
 
-Capture cam;
+private Capture cam;
 
 void setup() {
   size(1080, 720);

@@ -8,10 +8,10 @@ public String[] readFile(File fileName) {
   return input;
 }
 
-public void editFile( String[] toBeEdit, String oldLine, String newLine){
-  for (int i = 0; i < toBeEdit.length; i++) {
-    if (toBeEdit[i] == oldLine) {
-      toBeEdit[i] = newLine;
-    }
-  }
+public void editFile( String[] editedFile, String fileName){
+  saveStrings(fileName, editedFile);
+}
+
+public void newFile( String[] editedFile, String fileName){
+  saveStrings(fileName, editedFile);
 }

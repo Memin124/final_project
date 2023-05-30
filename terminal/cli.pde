@@ -3,6 +3,7 @@ import java.util.*;
 class terminal{
   private ArrayList<String> typeLog;
   private String User;
+  private int arrowKey = 0;
   
   void setup() {
     size(1080, 720);
@@ -32,6 +33,18 @@ class terminal{
     else {
       typeLog.set(typeLog.size()-1, typeLog.get(typeLog.size()-1) + key);
     }
+    
+    if (key == UP) {
+      arrowKey++;
+    }
+    if (key == DOWN) {
+      arrowKey--;
+    }
+  }
+  
+  float mouseWheel(MouseEvent event) {
+   float e = event.getCount();
+   return e;
   }
   
 }

@@ -29,16 +29,17 @@ class terminal{
     if (key == ENTER) {
       // execute(typeLog.get(typeLog.size()-1));
       typeLog.add( User + " > ");
+    }  
+    else if (key == UP) {
+      arrowKey--;
     }
-    else {
-      typeLog.set(typeLog.size()-1, typeLog.get(typeLog.size()-1) + key);
-    }
-    
-    if (key == UP) {
+    else if (key == DOWN) {
       arrowKey++;
     }
-    if (key == DOWN) {
-      arrowKey--;
+    else if (key == RIGHT) {}
+    else if (key == LEFT) {}
+    else {
+      typeLog.set(typeLog.size()-1, typeLog.get(typeLog.size()-1) + key);
     }
   }
   

@@ -5,7 +5,7 @@ class terminal{
   private String User;
   
   void setup() {
-    size(720, 480);
+    size(1080, 720);
   }
   
   

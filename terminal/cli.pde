@@ -7,6 +7,7 @@ class terminal{
   private int editPlace = 0;
   private int history = 0;
   private String frame;
+  private PFont font;
   
   void setup() {
     size(1080, 720);
@@ -75,7 +76,7 @@ class terminal{
   }
   
   void mouseWheel(MouseEvent event) {
-   arrowKey = constrain( arrowkey - event.getCount, 0, typeLog.size());
+   arrowKey = constrain( arrowKey - event.getCount(), 0, typeLog.size());
   }
   
 }

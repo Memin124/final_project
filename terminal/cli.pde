@@ -49,7 +49,7 @@ class terminal{
     else if (key == RIGHT) {
       if( arrowKey != 0) {arrowKey = 0;}
       else{
-         editPlace = constrain( editPlace -1, 0, 80); // check window width for 80
+         editPlace = constrain( editPlace +1, 0, 80); // check window width for 80
       }
     }
     else if (key == LEFT) {

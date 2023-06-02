@@ -76,7 +76,7 @@ class terminal{
   }
   
   void mouseWheel(MouseEvent event) {
-   arrowKey = constrain( arrowKey - event.getCount(), 0, typeLog.size());
+   arrowKey = constrain( arrowKey - (int) event.getCount(), 0, typeLog.size());
   }
   
 }

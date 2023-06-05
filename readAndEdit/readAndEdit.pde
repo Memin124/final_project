@@ -4,15 +4,17 @@ import java.util.*;
    returns a String array with each line of the file as an element
 */
 class file {
-  PFont font;
+  private PFont font;
   void setup() {
       size(1080, 720);
       font = loadFont("Menlo-Regular-11.vlw");
       textFont(font);
     }
   
-  public String[] readFile(File fileName) {
-    String[] input = loadStrings(fileName);
+  public String[] readFile(String fileName) {
+    String filePath = dataPath(fileName);
+    File reference = new File(fileName);
+    String[] input = loadStrings(reference);
     return input;
   }
   
@@ -24,7 +26,7 @@ class file {
     }
   }
   
-  public void readPrint(File fileName) {
+  public void readPrint(String fileName) {
     int numOfLines = 0;
     int startIndex = 0;
     int endIndex = 81;

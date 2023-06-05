@@ -32,36 +32,61 @@ class terminal{
   void terminalDraw(int index) {
     int value = typeLog.size() - 1 + index;
     if (value - 29 >= 0) {
-        int lineCount = 0;
-        for (int i = value; i >= Math.max(0, value - 30); i--) {
-            if (lineCount < 30) {
+        int lineCount = 1;  // Increase the line count by 1
+
+        // Handling the bottom line separately 
+        String bottomLine = typeLog.get(value);
+        List<String> bottomParts = new ArrayList<>();
+        int start = 0;
+        while (start < bottomLine.length()) {
+            int end = Math.min(start + 80, bottomLine.length());
+            bottomParts.add(bottomLine.substring(start, end));
+            start = end;
+        }
+        Collections.reverse(bottomParts);
+        int currentLength = bottomLine.length();
+        for (String part : bottomParts) {
+            int relativeEditPlace = editPlace - (currentLength - part.length());
+            if (relativeEditPlace >= 0 && relativeEditPlace < part.length()) {
+                String beforeEdit = part.substring(0, relativeEditPlace);
+                String editChar = part.substring(relativeEditPlace, relativeEditPlace + 1);
+                String afterEdit = relativeEditPlace + 1 < part.length() ? part.substring(relativeEditPlace + 1) : "";
+                
+                fill(0); // Set color to black for normal text
+                text(beforeEdit, 10, height - 20 * lineCount);
+
+                fill(0, 0, 255); // Set color to blue for editPlace
+                text(editChar, 10 + textWidth(beforeEdit), height - 20 * lineCount);
+
+                fill(0); // Reset color to black for the rest of the line
+                text(afterEdit, 10 + textWidth(beforeEdit + editChar), height - 20 * lineCount);
+            } else {
+                fill(0); // Set color to black
+                text(part, 10, height - 20 * lineCount);
+            }
+            currentLength -= part.length();
+            lineCount++;
+        }
+
+        // Handling the rest of the lines
+        for (int i = value - 1; i >= Math.max(0, value - 30); i--) {
+            if (lineCount <= 30) {
                 String line = typeLog.get(i);
-                int start = 0;
+                List<String> parts = new ArrayList<>();
+                start = 0;
                 while (start < line.length()) {
                     int end = Math.min(start + 80, line.length());
-                    String substring = line.substring(start, end);
-                    // Only color a character in the first printed line
-                    if (i == value && lineCount == 0 && line.length() - editPlace >= start && line.length() - editPlace < end) {
-                        String beforeEdit = substring.substring(0, line.length() - editPlace - start);
-                        String editChar = substring.substring(line.length() - editPlace - start, line.length() - editPlace - start + 1);
-                        String afterEdit = line.length() - editPlace - start + 1 < substring.length() ? substring.substring(line.length() - editPlace - start + 1) : "";
-                        fill(255); // Set color to black for normal text
-                        text(beforeEdit, 10, height - 20 * (lineCount + 1));
-                        fill(0, 0, 255); // Set color to blue for editPlace
-                        text(editChar, 10 + textWidth(beforeEdit), height - 20 * (lineCount + 1));
-                        fill(255); // Reset color to black for the rest of the line
-                        text(afterEdit, 10 + textWidth(beforeEdit + editChar), height - 20 * (lineCount + 1));
-                    } else {
-                        text(substring, 10, height - 20 * (lineCount + 1));
-                    }
+                    parts.add(line.substring(start, end));
                     start = end;
+                }
+                Collections.reverse(parts);
+                for (String part : parts) {
+                    fill(0); // Set color to black
+                    text(part, 10, height - 20 * lineCount);
                     lineCount++;
-                    if (lineCount >= 30) {
-                        break;
-                    }
                 }
             }
-            if (lineCount >= 30) {
+            if (lineCount > 30) {
                 break;
             }
         }

@@ -8,6 +8,7 @@ class terminal{
   private int history = 0;
   private String frame;
   private PFont font;
+  readAndEdit files; 
   
   void setup() {
     size(1080, 720);
@@ -24,8 +25,8 @@ class terminal{
   }
   
   void draw() {
-    background(255);
-    fill(0);
+    background(0);
+    fill(255);
     terminalDraw(arrowKey);
   }
   
@@ -52,16 +53,16 @@ class terminal{
                 String editChar = part.substring(relativeEditPlace, relativeEditPlace + 1);
                 String afterEdit = relativeEditPlace + 1 < part.length() ? part.substring(relativeEditPlace + 1) : "";
                 
-                fill(0); // Set color to black for normal text
+                fill(255); // Set color to white for normal text
                 text(beforeEdit, 10, height - 20 * lineCount);
 
                 fill(0, 0, 255); // Set color to blue for editPlace
                 text(editChar, 10 + textWidth(beforeEdit), height - 20 * lineCount);
 
-                fill(0); // Reset color to black for the rest of the line
+                fill(255); // Reset color to white for the rest of the line
                 text(afterEdit, 10 + textWidth(beforeEdit + editChar), height - 20 * lineCount);
             } else {
-                fill(0); // Set color to black
+                fill(255); // Set color to white
                 text(part, 10, height - 20 * lineCount);
             }
             currentLength -= part.length();
@@ -81,7 +82,7 @@ class terminal{
                 }
                 Collections.reverse(parts);
                 for (String part : parts) {
-                    fill(0); // Set color to black
+                    fill(255); // Set color to white
                     text(part, 10, height - 20 * lineCount);
                     lineCount++;
                 }
@@ -96,7 +97,10 @@ class terminal{
   void keyPressed() {
     if (key == ENTER) {
       if( arrowKey != 0) {arrowKey = 0;}
-      else{
+      else if( typeLog.get(typeLog.size()-1).indexOf( "cat") = User.length() +3){
+        typeLog.addAll( Arrays.asList( ))
+        Arrays.asList( files.readFiles( typeLog.get(typeLog.size()-1).substring( User.length() +7, typeLog.get(typeLog.size()-1).indexOf( ' ', User.length() +7))));
+      } else{
         // execute(typeLog.get(typeLog.size()-1));
         typeLog.add( User + " > ");
       }

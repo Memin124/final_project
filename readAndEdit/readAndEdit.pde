@@ -1,13 +1,14 @@
 import java.util.*;
-List<String> lines;
-int scroll;
-int editLine;
-int editIndex;
+import java.io.FileWriter;
 
 /* input: the file name or URL 
    returns a String array with each line of the file as an element
 */
 class file {
+  List<String> lines;
+  int scroll;
+  int editLine;
+  int editIndex;
   private PFont font;
   void setup() {
       size(1080, 720);
@@ -28,7 +29,7 @@ class file {
         while (scanner.hasNextLine()) {
             lines.add(scanner.nextLine());
         }
-    } catch (FileNotFoundException e) {
+    } catch (IOException e) {
         lines.add("An error occurred while reading the file.");
         System.out.println("An error occurred while reading the file.");
         e.printStackTrace();

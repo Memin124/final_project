@@ -5,10 +5,10 @@ import java.io.FileWriter;
    returns a String array with each line of the file as an element
 */
 class file {
-  List<String> lines;
-  int scroll;
-  int editLine;
-  int editIndex;
+  private List<String> lines;
+  private int scroll;
+  private int editLine;
+  private int editIndex;
   private PFont font;
   void setup() {
       size(1080, 720);

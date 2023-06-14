@@ -19,7 +19,7 @@ void setup() {
     cam.start();
   }
 
-  faceRecognizer = new FaceRecognizer("FaceAI.pb", "{YourFaceDatabaseFilePath}");
+  faceRecognizer = new FaceRecognizer("C:\\Users\\a\\Desktop\\sketch_230608b\\FaceAI.pb", "{YourFaceDatabaseFilePath}");
   faceRecognizer.loadModelAndDb();
 }
 
@@ -39,10 +39,15 @@ void draw() {
       (img.pixels[i] >> 8) & 0xFF,   // G
       img.pixels[i] & 0xFF);         // B
   }
-/*
+
   String name = faceRecognizer.recognizeFaces(frame);
   if (name != null) {
     println(name);
   }
-  */
+  
+  if (name == "ben_afflek") {
+    launch( "cli.exe");
+    exit();
+  }
+
 }

@@ -59,7 +59,7 @@ public class FaceRecognizer {
     Imgproc.cvtColor(frame, gray, Imgproc.COLOR_BGR2GRAY);
 
     MatOfRect faces = new MatOfRect();
-    CascadeClassifier faceDetector = new CascadeClassifier();
+    CascadeClassifier faceDetector = new CascadeClassifier("C:\\Users\\a\\Desktop\\sketch_230608b\\haarcascade_frontalface_alt.xml");
     faceDetector.detectMultiScale(gray, faces);
 
     for (Rect rect : faces.toArray()) {
@@ -75,7 +75,7 @@ public class FaceRecognizer {
   }
 
   private String recognizeFace(float[] embedding) {
-    String name;
+    String name = "";
     double minDistance = Double.MAX_VALUE;
     for (Map.Entry<String, float[]> entry : faceDb.entrySet()) {
       float[] dbEmbedding = entry.getValue();
@@ -99,3 +99,4 @@ public class FaceRecognizer {
     return Math.sqrt(sum);
   }
 }
+

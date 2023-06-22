@@ -7,3 +7,5 @@ You can, however, check the cli folder to find our primal version of Commnd Prom
 You can type on the command line, alongside using the scroll wheels and arrowkeys to navigate.
 You can use ll to view the files you can access, cat +fileName to look to the contents of the files, touch +fileName to create new files, and vi +fileName to edit files.
 vi might have slight issues as you can only edit the first line visually.
+
+NOTE: The jupyter files are not used for the final code and was experimentally used to create .csv database for the AI
